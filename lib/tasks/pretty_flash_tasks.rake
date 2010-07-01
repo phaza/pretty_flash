@@ -1,7 +1,7 @@
 namespace :pretty_flash do
   desc "Copies assets to proper application directories"
   task :install do
-    ASSETS = File.join(File.dirname(__FILE__), '..', 'assets')
+    ASSETS = File.join(File.dirname(__FILE__), ['..', '..'].join(File::SEPARATOR), 'assets')
     Dir.glob("#{ASSETS}/*").each do |folder|
       folder_name = folder.gsub(/\/.+\//, '')
       destination = File.join(Rails.public_path, folder_name)
